@@ -1,29 +1,28 @@
 #include<stdio.h>
-#include<math.h>
-int amst_c(int);
-int main(){
-    int n,am;
-    printf("Enter the number:\n");
+int am_n(int,int);
+int main()
+{
+    int n,m,c=0;
+    printf("Enter a number: ");
     scanf("%d",&n);
-    am=amst_c(n);
-if(am==n)
-    printf("%d is an Armstrong number.\n",n);
-else
-    printf("%d is not an Armstrong number.\n",n);
-return 0;
-}
-int amst_c(int n){
-     int d=0,m,sum=0,r;
     m=n;
-    while(n>0){
-       n=n/10;
-       d++;
+    while(n>1){
+        n=n/10;
+        c++;
+    }
+    n=m;
+    m=am_n(n,c);
+if(m==n)
+    printf("The number %d is an Armstrong number",n);
+else
+    printf("The number %d is not an Armstrong number",n);
+    
+    return 0;
 }
-n=m;
-while(n>0){
-    r=n%10;
-    sum=sum+pow(r,d);
-    n=n/10;
-}
-return sum;
+int am_n(int n,int c)
+{
+   if(n==0)
+       return 0;
+   else
+       return (pow(n%10,c)+am_n(n/10,c));
 }
